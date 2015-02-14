@@ -1,6 +1,6 @@
 Algorithm Problems
 ======
-Too lazy to upload old solutions from soj, poj, hdu, hustoj, zoj, codeforces, topcoder, spoj, sgu
+Too lazy to upload old solutions from poj, hdu, hustoj, zoj, codeforces, topcoder, spoj, sgu
 
 Related Links
 ------

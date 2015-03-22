@@ -1,0 +1,28 @@
+<h2>Description</h2>
+For a confidential purpose, scientists on planet SCU designed an program based on MapReduce model on a distributed system. They were counting the sum of money their residents have.(Oh, don't ask me why I know this.)
+Map and Reduce are the two parts of their program. 
+Map function were run on some machines, counting up the sum of each denomination of some certain blocks. e.g. One machine ran the Map function and calculated that there are 1298 $1, 432 $3 and 199 $9 from the people in ErJi Building.
+Reduce function were run on some other machines, summing up the total value of each result calculated by the Map machines. And the sum of money can be figured out.
+Sadly, there were some bugs in their program as they did not test it. During the Map function, the program can only count 0 or 1, and numbers greater than 1 will be recorded as a random number from 0 or 1. Thus, 1298 $1, 432 $3 and 199 $9 may be recorded as 1 $1, 0 $3 and 0 $9.
+<b>What a horrible mistake!</b>
+However, They could as well calculate the sum S, though it may not have the original meaning they wanted. qw4990 noticed the mistake but he did not want to fix it. He wanted you to tell him, there were 3 Map machines and the sum is S, how many states ...
+PS: the denominations of notes on planet SCU are 1, 3, 9, 27, ..., in a word. 3^k (k>=0)
+
+<h2>Input</h2>
+1 line: T, indicating the number of test cases.
+2 - T+1 line: n, indicating ...
+
+<h2>Output</h2>
+For each case, output the count of methods in a line.
+
+<h2>Sample Input</h2>
+2
+9
+10
+
+<h2>Sample Output</h2>
+3
+2
+
+<h2>Author</h2>
+huangshenno1

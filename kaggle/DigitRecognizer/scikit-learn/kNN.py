@@ -1,5 +1,6 @@
 from numpy import *
 import random
+import time
 import csv
 
 def loadTrainData():
@@ -9,9 +10,10 @@ def loadTrainData():
     with open('../train.csv', 'r') as fin:
 	lines = list(csv.reader(fin))
 	for line in lines[1:]:
-	    line = map(int, line)
-	    line[1:] = map(lambda x: x / 255.0, line[1:])
-	    arr.append(line)
+	    if random.random() < 0.5:
+		line = map(int, line)
+	  	line[1:] = map(lambda x: x / 255.0, line[1:])
+	  	arr.append(line)
     arr = array(arr)
     data = arr[:, 1:]
     label = arr[:, 0]
@@ -23,23 +25,22 @@ def loadTestData():
     with open('../test.csv', 'r') as fin:
 	lines = list(csv.reader(fin))
 	for line in lines[1:]:
-	    if random.random() < 0.1:
-		line = map(int, line)
-		line = map(lambda x: x / 255.0, line)
-		arr.append(line)
+	    line = map(int, line)
+	    line = map(lambda x: x / 255.0, line)
+	    arr.append(line)
     data = array(arr)
     return data
     
 def saveTestLabel(label):
-    with open('../kNN_sk.csv', 'w') as fout:
+    with open('kNN.csv', 'wb') as fout:
 	writer = csv.writer(fout)
-	writer.writeow(['ImageId', 'Label'])
+	writer.writerow(['ImageId', 'Label'])
 	for i in xrange(len(label)):
-	    writer.writeow([i+1, label[i]])
+	    writer.writerow([i+1, int(label[i])])
 
 from sklearn.neighbors import KNeighborsClassifier
 def kNN(trainData, trainLabel, testData):
-    classifier = KNeighborsClassifier()
+    classifier = KNeighborsClassifier(15)
     classifier.fit(trainData, ravel(trainLabel))
     testLabel = classifier.predict(testData)
     return testLabel
@@ -49,3 +50,4 @@ trainData, trainLabel = loadTrainData()
 testData = loadTestData()
 testLabel = kNN(trainData, trainLabel, testData)
 saveTestLabel(testLabel)
+print time.clock()

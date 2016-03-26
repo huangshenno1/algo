@@ -1,4 +1,3 @@
 *.py[cod]
 *.csv
 project_euler/*.txt
-make/
